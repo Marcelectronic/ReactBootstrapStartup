@@ -1,0 +1,12 @@
+.sidebar {
+	min-width: 15rem;
+    max-width: 20rem;
+	word-break: normal;
+}
+
+@media (max-width: 768px) {
+	.sidebar {
+		width: 95%;
+		max-width: 95%;
+	}
+}

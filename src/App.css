@@ -1,0 +1,7 @@
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    border-radius: 100px;
+    border: none;
+  }
