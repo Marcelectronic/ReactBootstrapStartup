@@ -19,15 +19,13 @@ const GoToTopButton = (props) => {
 	}, []);
 
 	const cleanUp = useCallback(() => {
-		console.log("cleanUp");
 		window.removeEventListener("scroll", handleBackToTop);
 	}, [handleBackToTop]);
 
 	useEffect(() => {
-		console.log("useEffect");
 		window.addEventListener("scroll", handleBackToTop);
 		return cleanUp;
-	}, []);
+	}, [handleBackToTop, cleanUp]);
 
 	return showBacktoTop ? (
 		<Fragment>
