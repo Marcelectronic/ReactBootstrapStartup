@@ -64,6 +64,7 @@ export const login = (pars) => {
 			const url =
 				process.env.REACT_APP_API_AUTH_URL +
 				process.env.REACT_APP_API_AUTH_LOGIN +
+				process.env.REACT_APP_API_AUTH_ID +
 				process.env.REACT_APP_API_AUTH_KEY;
 			const response = await fetch(url, {
 				method: "POST",
@@ -110,6 +111,7 @@ export const changePassword = (pars) => {
 			const url =
 				process.env.REACT_APP_API_AUTH_URL +
 				process.env.REACT_APP_API_AUTH_PASSWORD +
+				process.env.REACT_APP_API_AUTH_ID +
 				process.env.REACT_APP_API_AUTH_KEY;
 			const response = await fetch(url, {
 				method: "POST",

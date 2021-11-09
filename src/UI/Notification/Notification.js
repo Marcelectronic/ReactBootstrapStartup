@@ -1,5 +1,5 @@
 import { Alert } from "react-bootstrap";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import { Transition } from "react-transition-group";
 import { useDispatch } from "react-redux";
 import { removeNotification } from "../../store/Notification";
@@ -26,11 +26,15 @@ const Notification = (props) => {
 		dispatch(removeNotification(props.ident));
 	};
 
+	const onClose = () => {
+		setShow(false);
+	};
+
 	const defaultStyle = {
 		transition: `opacity ${animationDuration}ms ease-in-out`,
 		opacity: 0,
 	};
-
+	
 	const transitionStyles = {
 		entering: { opacity: 0 },
 		entered: { opacity: 1 },
@@ -39,33 +43,31 @@ const Notification = (props) => {
 	};
 
 	return (
-		<Transition
-			in={show}
-			timeout={animationDuration}
-			mountOnEnter
-			unmountOnExit
-			nodeRef={myref}
-			onExited={removeState}
-		>
-			{(state) => (
-				<div
-					ref={myref}
-					className="w-100 px-0 px-sm-2 px-md-4 px-lg-5"
-					style={{
-						...defaultStyle,
-						...transitionStyles[state],
-					}}
-				>
-					<Alert
-						variant={props.type}
-						onClose={() => setShow(false)}
-						dismissible
+		<Fragment>
+			<Transition
+				in={show}
+				timeout={animationDuration}
+				mountOnEnter
+				unmountOnExit
+				nodeRef={myref}
+				onExited={removeState}
+			>
+				{(state) => (
+					<div
+						ref={myref}
+						className="w-100 px-0 px-sm-2 px-md-4 px-lg-5"
+						style={{
+							...defaultStyle,
+							...transitionStyles[state],
+						}}
 					>
-						{props.message}
-					</Alert>
-				</div>
-			)}
-		</Transition>
+						<Alert variant={props.type} onClose={onClose} dismissible>
+							{props.message}
+						</Alert>
+					</div>
+				)}
+			</Transition>
+		</Fragment>
 	);
 };
 
