@@ -25,6 +25,9 @@ Error.args = {
 	ident: 1,
 	type: "danger",
 	message: "Error",
+	autoclose: false,
+	duration: 700,
+	timeout: 4000
 };
 
 export const Info = Template.bind({});
@@ -32,4 +35,7 @@ Info.args = {
 	ident: 1,
 	type: "secondary",
 	message: "Info",
+	autoclose: false,
+	duration: 700,
+	timeout: 4000
 };

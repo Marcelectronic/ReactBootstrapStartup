@@ -7,20 +7,27 @@ import { removeNotification } from "../../store/Notification";
 const Notification = (props) => {
 	const [show, setShow] = useState(true);
 	const myref = useRef();
-	const animationDuration = 700;
-	const timeoutDuration = 4000;
+
+	const animationDuration =
+		typeof props.duration !== "undefined" ? props.duration : 700;
+	const timeoutDuration =
+		typeof props.timeout !== "undefined" ? props.timeout : 4000;
+	const autoclose =
+		typeof props.autoclose !== "undefined" ? props.autoclose : true;
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const timeId = setTimeout(() => {
-			setShow(false);
-		}, timeoutDuration);
+		if (autoclose) {
+			const timeId = setTimeout(() => {
+				setShow(false);
+			}, timeoutDuration);
 
-		return () => {
-			clearTimeout(timeId);
-		};
-	}, []);
+			return () => {
+				clearTimeout(timeId);
+			};
+		}
+	}, [autoclose, timeoutDuration]);
 
 	const removeState = () => {
 		dispatch(removeNotification(props.ident));
@@ -34,7 +41,7 @@ const Notification = (props) => {
 		transition: `opacity ${animationDuration}ms ease-in-out`,
 		opacity: 0,
 	};
-	
+
 	const transitionStyles = {
 		entering: { opacity: 0 },
 		entered: { opacity: 1 },
@@ -43,6 +50,7 @@ const Notification = (props) => {
 	};
 
 	return (
+		// show &&
 		<Fragment>
 			<Transition
 				in={show}

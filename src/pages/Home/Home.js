@@ -50,8 +50,9 @@ const Home = () => {
 					<li>
 						REACT_APP_API_AUTH_URL=https://identitytoolkit.googleapis.com/v1/accounts:
 					</li>
-					<li> REACT_APP_API_AUTH_LOGIN=signInWithPassword?key=</li>
-					<li> REACT_APP_API_AUTH_PASSWORD=update?key=</li>
+					<li> REACT_APP_API_AUTH_LOGIN=signInWithPassword</li>
+					<li> REACT_APP_API_AUTH_PASSWORD=update</li>
+					<li> REACT_APP_API_AUTH_ID=?key=</li>
 					<li> REACT_APP_API_AUTH_KEY=???</li>
 				</ul>
 			</div>

@@ -48,8 +48,9 @@ to run needs the following enviroment variables,
 - REACT_APP_API_URL=https://???.firebaseio.com
 - REACT_APP_COMPANY_NAME=???
 - REACT_APP_API_AUTH_URL=https://identitytoolkit.googleapis.com/v1/accounts:
-- REACT_APP_API_AUTH_LOGIN=signInWithPassword?key=
-- REACT_APP_API_AUTH_PASSWORD=update?key=
+- REACT_APP_API_AUTH_LOGIN=signInWithPassword
+- REACT_APP_API_AUTH_PASSWORD=update
+- REACT_APP_API_AUTH_ID=?key=
 - REACT_APP_API_AUTH_KEY=???	
 
 To start using the project just edit the following files,
