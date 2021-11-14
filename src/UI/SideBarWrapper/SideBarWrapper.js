@@ -1,6 +1,6 @@
-import classes from "./SideBarProvider.module.css";
+import classes from "./SideBarWrapper.module.css";
 
-const SideBarProvider = (props) => {
+const SideBarWrapper = (props) => {
 	return (
 		<section
 			className={
@@ -13,4 +13,4 @@ const SideBarProvider = (props) => {
 	);
 };
 
-export default SideBarProvider;
+export default SideBarWrapper;
