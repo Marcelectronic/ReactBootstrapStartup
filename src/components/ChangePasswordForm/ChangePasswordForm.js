@@ -41,7 +41,7 @@ const ChangePasswordForm = () => {
 			primary: "NewPassword",
 			secondary: "CheckNewPassword",
 			primaryText: "New Password",
-			secondaryText: "Repeat New Password",
+			secondaryText: "Repeat Password",
 		},
 	};
 
@@ -57,9 +57,9 @@ const ChangePasswordForm = () => {
 					<label htmlFor="NewPassword" className="form-label">
 						New Password
 					</label>
-
 					<input
 						name="NewPassword"
+						id="NewPassword"
 						type="password"
 						maxLength="30"
 						value={formStatus.input.NewPassword}
@@ -74,10 +74,11 @@ const ChangePasswordForm = () => {
 				</div>
 				<div className="mb-3">
 					<label htmlFor="CheckNewPassword" className="form-label">
-						Repeat New Password
+						Repeat Password
 					</label>
 					<input
 						name="CheckNewPassword"
+						id="CheckNewPassword"
 						type="password"
 						value={formStatus.input.CheckNewPassword}
 						onChange={formStatus.inputChangeHandler}

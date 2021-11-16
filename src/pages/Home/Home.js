@@ -1,6 +1,8 @@
+import classes from "./Home.module.css";
+
 const Home = () => {
 	return (
-		<div className="flex flex-column w-100 mx-0 px-0">
+		<div className={"flex flex-column w-100 mx-0 px-0 " + classes.base}>
 			<h3>React Startup Setup</h3>
 			<div className="my-3">
 				Includes,

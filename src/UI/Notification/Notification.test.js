@@ -2,18 +2,9 @@ import {
 	render,
 	screen,
 	fireEvent,
+	waitForElementToBeRemoved,
 } from "../../utilities/testProvidersUtilities";
 import Notification from "./Notification";
-
-function createCustomTimeout(timeout) {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			const element = screen.queryByText(/Testing app base/i);
-			expect(element).not.toBeInTheDocument();
-			resolve();
-		}, timeout);
-	});
-}
 
 describe("UI Elements", () => {
 	test("Error Notification with click", async () => {
@@ -22,19 +13,20 @@ describe("UI Elements", () => {
 			type: "danger",
 			message: "Testing app base",
 			autoclose: false,
-			duration: 0,
+			duration: 700,
 		};
 
 		render(<Notification {...pars}></Notification>);
 
-		let element = screen.queryByText(/Testing app base/i);
-		expect(element).toBeInTheDocument();
+		 const element = screen.queryByText(/Testing app base/i);
+		 expect(element).toBeInTheDocument();
 
-		const buttonElement = screen.getByRole("button");
-		fireEvent.click(buttonElement);
+		 const buttonElement = screen.getByRole("button");
+		 fireEvent.click(buttonElement);
 
-		await createCustomTimeout(800);
-	});
+		await waitForElementToBeRemoved(() => screen.queryByText(/Testing app base/i),{timeout:2000})
+
+	}, 7000);
 
 	test("Error Notification without click", async () => {
 		const pars = {
@@ -42,18 +34,16 @@ describe("UI Elements", () => {
 			type: "secondary",
 			message: "Testing app base",
 			autoclose: true,
-			duration: 0,
-            timeout: 1000
+			duration: 700,
+            timeout: 2000
 		};
 
 		render(<Notification {...pars}></Notification>);
 
-		let element = screen.queryByText(/Testing app base/i);
+		const element = screen.queryByText(/Testing app base/i);
 		expect(element).toBeInTheDocument();
 
-		const buttonElement = screen.getByRole("button");
-		fireEvent.click(buttonElement);
+		await waitForElementToBeRemoved(() => screen.queryByText(/Testing app base/i),{timeout:4000})
 
-		await createCustomTimeout(2000);
 	}, 7000);
 });

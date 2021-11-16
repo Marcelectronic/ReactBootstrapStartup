@@ -23,7 +23,9 @@ function App() {
 				dispatch(addInfo({ message: "Logged Out - Timeout" }));
 				dispatch(setLogout());
 			}, diff);
-			return clearTimeout(timeoutID);
+			return () => {
+				clearTimeout(timeoutID);
+			};
 		}
 	}, [dispatch, islogin, expirationTime]);
 
