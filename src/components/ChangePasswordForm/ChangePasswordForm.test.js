@@ -44,10 +44,13 @@ describe("Components", () => {
 		const password = screen.getByLabelText(/New Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(password);
 		userEvent.type(password, "NewPasswordTest");
+
 		const confirmation = screen.getByLabelText(/Repeat Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(confirmation);
 		userEvent.type(confirmation, "NewPasswordTest");
 
 		const resetBtn = screen.getByRole("button", { name: /Reset/i });
@@ -74,10 +77,12 @@ describe("Components", () => {
 		const password = screen.getByLabelText(/New Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(password);
 		userEvent.type(password, "NewPasswordTest");
 		const confirmation = screen.getByLabelText(/Repeat Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(confirmation);
 		userEvent.type(confirmation, "WrongConfirmation");
 
 		const errorMsgAfter = screen.queryByText(
@@ -119,6 +124,7 @@ describe("Components", () => {
 		const password = screen.getByLabelText(/New Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(password);
 		userEvent.type(password, "newpas");
 		userEvent.tab();
 
@@ -131,6 +137,7 @@ describe("Components", () => {
 		const confirmation = screen.getByLabelText(/Repeat Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(confirmation);
 		userEvent.type(confirmation, "newpas");
 		userEvent.tab();
 
@@ -174,6 +181,7 @@ describe("Components", () => {
 		const password = screen.getByLabelText(/New Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(password);
 		userEvent.type(password, "NewPasswordTest");
 		userEvent.tab();
 
@@ -186,6 +194,7 @@ describe("Components", () => {
 		const confirmation = screen.getByLabelText(/Repeat Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(confirmation);
 		userEvent.type(confirmation, "NewPasswordTest");
 		userEvent.tab();
 
@@ -240,12 +249,14 @@ describe("Components", () => {
 		const password = screen.getByLabelText(/New Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(password);
 		userEvent.type(password, "NewPasswordTest");
 		userEvent.tab();
 
 		const confirmation = screen.getByLabelText(/Repeat Password/i, {
 			selector: "input",
 		});
+		userEvent.clear(confirmation);
 		userEvent.type(confirmation, "NewPasswordTest");
 		userEvent.tab();
 
@@ -254,6 +265,5 @@ describe("Components", () => {
 
 		const changeBtn = screen.getByRole("button", { name: /Change/i });
 		userEvent.click(changeBtn);
-
 	}, 7000);
 });
